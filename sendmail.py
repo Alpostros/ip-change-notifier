@@ -7,9 +7,9 @@ from email.mime.text import MIMEText
 def prep_mail(ip_address, profile_name, profile_password):
   smtp_server = "smtp.gmail.com"
   port = 587
-  sender_email = "notifications.alpi@gmail.com"
-  receiver_email = "ozerenalp@gmail.com"
-  password = "rycpzkwcttovxyfu"
+  sender_email = "sender-mail@example.com"
+  receiver_email = "receiver-mail@example.com"
+  password = "enter your app password here"
   subject = "Your Public IP Address Has Been Changed!"
   
   message = MIMEMultipart()

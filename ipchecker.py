@@ -30,7 +30,7 @@ def check_ip_address():
     else:
         print("IP Address unchanged.")
 
-schedule.every(15).seconds.do(check_ip_address)
+schedule.every(30).minutes.do(check_ip_address)
 while(True):
     schedule.run_pending()
     time.sleep(1)
