@@ -1,3 +1,5 @@
+# Reference: https://realpython.com/python-send-email/
+
 import smtplib, ssl
 from email import encoders
 from email.mime.base import MIMEBase
