@@ -13,4 +13,4 @@ Run command ```python ipchecker.py <current-public-ip-address>```
 - OS: Raspberry Pi OS 64-bit
 - Device: A Raspberry Pi 4B with 4GB of RAM.
 - PiVPN should be installed and configured.
-- See requirements.txt too see the python libraries used in this project
+- Python schedule==1.1.0 (or newer) is required.
