@@ -19,13 +19,20 @@ def check_ip_address():
     global current_ip_address
     proc=subprocess.Popen("dig +short txt ch whoami.cloudflare @1.0.0.1", shell=True, stdout=subprocess.PIPE, )
     latest_ip_address = str(proc.communicate()[0])
-    latest_ip_address = latest_ip_address.split("\"")[1]
+    if len(latest_ip_address) < 2:
+        print("No IP address found, exiting.")
+        return None
 
+    latest_ip_address = latest_ip_address.split("\"")[1]
     if latest_ip_address != current_ip_address:
-        current_ip_address = latest_ip_address
-        profile_name, profile_password = create_vpn_profile()
-        print("IP Address has been changed, notifying master")
-        sendmail.prep_mail(latest_ip_address, profile_name, profile_password)
+        if "connection timed out" in latest_ip_address:
+            print("No IP Address, network disconnected.")
+
+        else:
+            current_ip_address = latest_ip_address
+            profile_name, profile_password = create_vpn_profile()
+            print("IP Address has been changed, notifying master")
+            sendmail.prep_mail(latest_ip_address, profile_name, profile_password)
 
     else:
         print("IP Address unchanged.")
